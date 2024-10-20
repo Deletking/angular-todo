@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  angular-app:
+    build: .
+    container_name: angular-todo
+    ports:
+      - "4200:4200" # Mapeia a porta local 4200 para a porta 4200 do container
+    volumes:
+      - .:/usr/src/app # Monta o volume local para permitir desenvolvimento ao vivo
+      - /usr/src/app/node_modules # Evita que os node_modules sejam sobrescritos localmente
+    stdin_open: true
+    tty: true
