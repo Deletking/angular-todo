@@ -1,0 +1,11 @@
+<div class="todo-input">
+  <span class="checkmark"></span>
+
+  <input
+    type="text"
+    [value]="taskInput()"
+    (input)="taskInput.set($any($event.target).value)"
+    placeholder="Create new todo..."
+    (keyup.enter)="addTask()"
+  />
+</div>

@@ -1,0 +1,156 @@
+@import "base/mixins";
+
+.todo-list {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+
+  font-family: "Josefin Sans", sans-serif;
+
+  .drag-drop-list {
+    width: 100%;
+    cursor: grab;
+  }
+
+  .footer-list {
+    padding: 24px;
+    font-size: 14px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    p {
+      font-weight: 400;
+      color: #9495a5;
+    }
+
+    .filter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        margin: 0 10px;
+        font-weight: 400;
+
+        &:hover {
+          font-weight: 600;
+          cursor: pointer;
+        }
+
+        &.active {
+          font-weight: 600;
+          cursor: pointer;
+          color: #3a7cfd;
+        }
+      }
+    }
+
+    .clear {
+      cursor: pointer;
+
+      &:hover {
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.draganddrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 24px;
+
+  p {
+    text-align: center;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9495a5;
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-bottom: 1px solid #e3e4f1;
+  width: 100%;
+  padding: 24px;
+  background-color: #fff;
+  box-sizing: border-box;
+  position: relative;
+
+  @include transition("background-color", 0.3s);
+
+  .checkmark {
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border: 2px solid #e3e4f1;
+    border-radius: 50%;
+    margin-right: 24px;
+
+    &.completed {
+      background-color: #3a7cfd;
+      border: 2px solid #3a7cfd;
+    }
+  }
+
+  p {
+    font-size: 18px;
+    margin: 0;
+    white-space: nowrap;
+
+    &.completed {
+      text-decoration: line-through;
+      color: #9495a5;
+    }
+  }
+
+  .delete {
+    margin-left: auto;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      pointer-events: none;
+    }
+  }
+
+  &.cdk-drag-preview {
+    background-color: #fff;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 24px;
+  }
+
+  &.cdk-drag-placeholder {
+    opacity: 0.5;
+    background-color: #fff;
+    border: 2px dashed #9495a5;
+    border-radius: 5px;
+    min-height: 48px;
+  }
+}

@@ -1,0 +1,39 @@
+<div class="todo-main">
+  <div class="container">
+    <section class="header-section">
+      <h1>T O D O</h1>
+
+      @if (themeService.getCurrentTheme() === 'light') {
+      <img
+        ngOptimizedImage
+        src="../assets/images/icon-moon.svg"
+        alt="Toggle Theme"
+        (click)="toggleTheme()"
+      />
+      } @else {
+      <img
+        ngOptimizedImage
+        src="../assets/images/icon-sun.svg"
+        alt="Toggle Theme"
+        (click)="toggleTheme()"
+      />
+      }
+    </section>
+
+    <section class="input-section">
+      <app-todo-input (taskAdded)="onTaskAdded($event)"></app-todo-input>
+    </section>
+
+    @if (tasks(); as taskList) { @if (taskList.length) {
+    <section class="list-section" role="region" aria-label="Todo list">
+      <app-todo-list
+        [tasks]="taskList"
+        (taskCompletion)="onTaskCompletion($event)"
+        (deleteTask)="onDeleteTask($event)"
+        (deleteTaskCompleted)="onDeleteTaskCompleted()"
+        (reorderTasks)="onReorderTasks($event)"
+      ></app-todo-list>
+    </section>
+    } }
+  </div>
+</div>

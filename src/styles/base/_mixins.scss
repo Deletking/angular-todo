@@ -1,0 +1,25 @@
+// Define mixins para os temas
+@mixin dark-theme() {
+  --background-color: #000000;
+  --text-color: #ffffff;
+  --primary-color: #1e90ff;
+}
+
+@mixin light-theme() {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #3a7cfd;
+}
+
+// Outros mixins utilitários
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+@mixin custom-border($color, $width, $style: solid) {
+  border: $width $style $color;
+}
+
+@mixin transition($property, $duration) {
+  transition: $property $duration ease-in-out;
+}

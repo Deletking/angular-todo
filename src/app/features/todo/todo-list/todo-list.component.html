@@ -1,0 +1,52 @@
+<div class="todo-list">
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="taskList()"
+    (cdkDropListDropped)="drop($event)"
+    class="drag-drop-list"
+  >
+    <div *ngFor="let task of taskList(); let i = index" cdkDrag class="list">
+      <span
+        class="checkmark"
+        [class.completed]="task.completed"
+        (click)="onTaskCompletion(task.id)"
+      ></span>
+      <p [class.completed]="task.completed">{{ task.text }}</p>
+
+      <span class="delete" (click)="onDeleteTask(task.id)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+          <path
+            fill="#494C6B"
+            fill-rule="evenodd"
+            d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
+          />
+        </svg>
+      </span>
+    </div>
+  </div>
+
+  <div class="footer-list">
+    <p>{{ taskCounter() }} items left</p>
+
+    <div class="filter">
+      <span [class.active]="currentFilter() === 'all'" (click)="filterAll()">
+        All
+      </span>
+      <span
+        [class.active]="currentFilter() === 'active'"
+        (click)="filterActive()"
+      >
+        Active
+      </span>
+      <span
+        [class.active]="currentFilter() === 'completed'"
+        (click)="filterCompleted()"
+      >
+        Completed
+      </span>
+    </div>
+
+    <p class="clear" (click)="onDeleteTaskCompleted()">Clear completed</p>
+  </div>
+</div>

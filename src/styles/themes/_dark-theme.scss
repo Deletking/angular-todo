@@ -1,0 +1,6 @@
+// src/styles/themes/dark.scss
+@import "../base/mixins";
+
+body.dark {
+  @include dark-theme();
+}

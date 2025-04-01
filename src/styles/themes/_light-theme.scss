@@ -1,0 +1,6 @@
+// src/styles/themes/light.scss
+@import "../base/mixins";
+
+body.light {
+  @include light-theme();
+}
